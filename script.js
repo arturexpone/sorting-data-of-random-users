@@ -62,9 +62,13 @@ function sortUsersMoney() {
 }
 
 function calculateWealt() {
+    if(document.querySelector('.sumOfWealth')) {
+        return null;
+    }
     const wealth = data.reduce((acc, user) => (acc += user.money), 0);
 
     const wealthEl = document.createElement('div');
+    wealthEl.classList.add('sumOfWealth');
     wealthEl.innerHTML = `<h3>Сумма: <strong>${formatMoney(wealth)}</strong></h3>`;
     main.appendChild(wealthEl);
 }
