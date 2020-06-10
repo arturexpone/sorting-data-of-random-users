@@ -46,4 +46,22 @@ function formatMoney(money) {
    return '$' + money.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 }
 
+function doubleMoney() {
+    data = data.map(user => ({...user, money: user.money * 2}));
+    updateDOM();
+}
+
+function searchMillioners() {
+    data = data.filter(user => user.money >= 1000000);
+    updateDOM();
+}
+
+function sortUsersMoney() {
+    data.sort((prev, next) => next.money - prev.money);
+    updateDOM();
+}
+
 addUserBtn.addEventListener('click', getRandomUser);
+doubleBtn.addEventListener('click', doubleMoney);
+showMillionariesBtn.addEventListener('click', searchMillioners);
+sortBtn.addEventListener('click', sortUsersMoney);
